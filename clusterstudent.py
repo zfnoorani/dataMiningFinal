@@ -137,8 +137,8 @@ def main():
                 d = nDistance(iItem, jItem, (max - min))
             originalDist[iName][jName] = d
             clusterDist[iName][jName] = d
-    print(originalDist)
-    print(clusterDist)
+    # print(originalDist)
+    # print(clusterDist)
 
     clusterNames = itemNames
     loopctr = 1
@@ -178,9 +178,20 @@ def main():
             completeLinkage(clusterDist, newClusterName, originalDist, clusterNames)
         clusterNames.append(newClusterName)
         print('iteration', loopctr)
-        print(clusterNames)
-        print(clusterDist)
-        loopctr += 1
+        # print(clusterNames)
+        for i in clusterNames:
+                print(i)
+
+        #print(clusterDist)
+        user=input("Do you want to interate?")
+        if(user==0):
+            loopctr += 1
+            print("____________________________")
+            continue
+        elif(user==1):
+            break
+
+
 
 
 main()
