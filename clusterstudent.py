@@ -20,12 +20,16 @@ def singleLinkage(clusterDist, newClusterName, originalDist, clusterNames):
     # use closest distances between clusters
     for s1 in clusterNames:
         smallestD = 9999
-        for cElem in s1:
-            for ncElem in newClusterName:
+        cnList = s1.split(' ')
+        for cElem in cnList:
+            # handle newClusterName changed to comma delimited string
+            ncList = newClusterName.split(' ')
+            for ncElem in ncList:
                 if float(originalDist[cElem][ncElem]) < float(smallestD):
                     smallestD = originalDist[cElem][ncElem]
         clusterDist[newClusterName][s1] = smallestD
         clusterDist[s1][newClusterName] = smallestD
+
 
 
 def completeLinkage(clusterDist, newClusterName, originalDist, clusterNames):
@@ -34,8 +38,11 @@ def completeLinkage(clusterDist, newClusterName, originalDist, clusterNames):
     # use farthest distances between clusters
     for s1 in clusterNames:
         largestD = 0
-        for cElem in s1:
-            for ncElem in newClusterName:
+        cnList = s1.split(' ')
+        for cElem in cnList:
+            # handle newClusterName changed to comma delimited string
+            ncList = newClusterName.split(' ')
+            for ncElem in ncList:
                 if float(originalDist[cElem][ncElem]) > float(largestD):
                     largestD = originalDist[cElem][ncElem]
         clusterDist[newClusterName][s1] = largestD
@@ -99,8 +106,8 @@ def main():
             elif line > max:
                 max = line
         print(min, max, (max - min))
-        print(itemNames)
-        print(items)
+        print(itemNames, '\n')
+        print(items, '\n')
     else:
         needToNormalize = []
         # get item data
@@ -144,7 +151,9 @@ def main():
     loopctr = 1
 
     # Step 2: Perform Agglomerative Clustering
-    while len(clusterNames) > 1:
+    numClust=input("How many clusters do you want [Max: 166 Min: 1]\n")
+    numClust = ((int)(numClust))
+    while len(clusterNames) > numClust:
         # find shortest distance in clusterDist
         shortestD = clusterDist[clusterNames[0]][clusterNames[1]]
         shortestI = clusterNames[0]
@@ -157,7 +166,7 @@ def main():
                     shortestJ = jName
 
         # merge clusters i and j
-        newClusterName = shortestI + shortestJ
+        newClusterName = shortestI + ' ' + shortestJ
         clusterNames.remove(shortestI)
         clusterNames.remove(shortestJ)
 
@@ -177,19 +186,21 @@ def main():
         else:
             completeLinkage(clusterDist, newClusterName, originalDist, clusterNames)
         clusterNames.append(newClusterName)
-        print('iteration', loopctr)
-        # print(clusterNames)
+        print('_____________________________________________________iteration__________________________________________________________', loopctr)
+        #print(clusterNames)
         for i in clusterNames:
-                print(i)
+            print(i,'\n')
+        loopctr += 1
+
 
         #print(clusterDist)
-        user=input("Do you want to interate?")
-        if(user==0):
-            loopctr += 1
-            print("____________________________")
-            continue
-        elif(user==1):
-            break
+        # user=input("Do you want to interate?")
+        # if(user=='0'):
+        #     loopctr += 1
+        #     print("____________________________", len(clusterNames))
+        #     continue
+        # elif(user==1):
+        #     break
 
 
 
