@@ -87,7 +87,7 @@ def calcEntropy(tuples, slot):
                 counts[1] += 1
             values[v] = counts
         else:
-            if (tuples[i][numAttrs-12] == 'N'):
+            if (tuples[i][numAttrs-12] == 'Y'):
                 values[v] = [1, 0]
             else:
                 values[v] = [0, 1]
@@ -95,7 +95,7 @@ def calcEntropy(tuples, slot):
     entropy = 0
     for v in values:
         counts = values[v]
-        print("Counts ", counts)
+        #print("Counts ", counts)
         totalCounts = counts[0] + counts[1]
         pos = counts[0]/totalCounts
         if (pos != 0):
@@ -104,7 +104,8 @@ def calcEntropy(tuples, slot):
         if (neg != 0):
             neg = -(neg * math.log2(neg))
         entropy += ((totalCounts/numTuples) * (pos + neg))
-
+        print(entropy, "totalCOunt ", totalCounts," numTuples ", numTuples, "pos ", pos, "neg ", neg )
+    print("____________________________________________")
     return entropy
 
 def getIPN(tuples):
