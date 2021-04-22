@@ -153,6 +153,7 @@ def main():
     gains = []
     for i in range(len(attrs)-1):
         e = round(calcEntropy(tuples, i),2)
+        print(e)
         gains.append(round(ipn-e, 2))
 
     print(attrs)
