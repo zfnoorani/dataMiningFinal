@@ -112,8 +112,8 @@ def getIPN(tuples):
     pos = 0
     for i in range(numTuples):
         #if there are 5 attribute values and a total of 6 tuples than subtract 2
-        print(tuples[i][numTuples-2])
-        if (tuples[i][numTuples-2] == 'y'):
+        print(tuples[i][numTuples-1])
+        if (tuples[i][numTuples-1] == 'y'):
             pos+=1
     neg = numTuples-pos
     print("neg: ", neg)
