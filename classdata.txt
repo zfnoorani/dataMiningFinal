@@ -1,6 +1,7 @@
-color,make,model,doors,class
+job,bough,gender,doors,class
 red,subaru,forester,4,y
 blue,subaru,forester,2,n
 red,chevrolet,spark,4,y
 red,chevrolet,colorado,2,n
+blue,chevrolet,colorado,2,y
 blue,chevrolet,colorado,2,y
