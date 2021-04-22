@@ -80,13 +80,14 @@ def calcEntropy(tuples, slot):
         v = tuples[i][slot]
         if (values.get(v) != None):
             counts = values[v]
-            if (tuples[i][numAttrs-1] == 'y'):
+            if (tuples[i][numAttrs-12] == 'Y'):
+                print(tuples[i][numAttrs-12])
                 counts[0] += 1
             else:
                 counts[1] += 1
             values[v] = counts
         else:
-            if (tuples[i][numAttrs-1] == 'y'):
+            if (tuples[i][numAttrs-12] == 'N'):
                 values[v] = [1, 0]
             else:
                 values[v] = [0, 1]

@@ -1,4 +1,4 @@
-job,bough,gender,doors,age,class
+job,bough,gender,unmarried,age,class
 Y,PC,F,N,25,N
 N,PC,M,Y,18,Y
 Y,STEREO,F,N,55,N
