@@ -1,7 +1,6 @@
-job,bough,gender,doors,age,class
-red,subaru,forester,12,4,y
-blue,subaru,forester,2,14,n
-red,chevrolet,spark,4,15,y
-red,chevrolet,colorado,2,16,n
-blue,chevrolet,colorado,2,25,y
-blue,chevrolet,colorado,2,36,y
+color,make,model,doors,class
+red,subaru,forester,4,y
+blue,subaru,forester,2,n
+red,chevrolet,spark,4,y
+red,chevrolet,colorado,2,n
+blue,chevrolet,colorado,2,y

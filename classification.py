@@ -107,16 +107,11 @@ def calcEntropy(tuples, slot):
 
 def getIPN(tuples):
     numTuples= len(tuples)
-    print(tuples)
-    print(" Num Tuples ", numTuples)
     pos = 0
     for i in range(numTuples):
-        #if there are 5 attribute values and a total of 6 tuples than subtract 2
-        print(tuples[i][numTuples-1])
         if (tuples[i][numTuples-1] == 'y'):
             pos+=1
     neg = numTuples-pos
-    print("neg: ", neg)
 
     pos = pos/numTuples
     neg = neg/numTuples
@@ -149,11 +144,9 @@ def main():
         dataLine = infile.readline().rstrip('\n')
 
     ipn = round(getIPN(tuples),2)
-    print(ipn, "IPN")
     gains = []
     for i in range(len(attrs)-1):
         e = round(calcEntropy(tuples, i),2)
-        print(e)
         gains.append(round(ipn-e, 2))
 
     print(attrs)
