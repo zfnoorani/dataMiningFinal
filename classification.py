@@ -81,7 +81,7 @@ def calcEntropy(tuples, slot):
         if (values.get(v) != None):
             counts = values[v]
             if (tuples[i][numAttrs-12] == 'Y'):
-                print(tuples[i][numAttrs-12])
+                #print(tuples[i][numAttrs-12])
                 counts[0] += 1
             else:
                 counts[1] += 1
@@ -95,6 +95,7 @@ def calcEntropy(tuples, slot):
     entropy = 0
     for v in values:
         counts = values[v]
+        print("Counts ", counts)
         totalCounts = counts[0] + counts[1]
         pos = counts[0]/totalCounts
         if (pos != 0):
@@ -113,7 +114,7 @@ def getIPN(tuples):
     pos = 0
     for i in range(numTuples):
         #if there are 5 attribute values and a total of 6 tuples than subtract 2
-        print(tuples[i][numTuples-12])
+        #print(tuples[i][numTuples-12])
         if (tuples[i][numTuples-12] == 'Y'):
             pos+=1
     neg = numTuples-pos
@@ -150,13 +151,13 @@ def main():
         tuples.append(dataLine)
         dataLine = infile.readline().rstrip('\n')
 
-    ipn = round(getIPN(tuples),6)
+    ipn = round(getIPN(tuples),4)
     print(ipn, "IPN")
     gains = []
     for i in range(len(attrs)-1):
-        e = round(calcEntropy(tuples, i),6)
+        e = round(calcEntropy(tuples, i),2)
         print('ent ',e)
-        gains.append(round(ipn-e, 6))
+        gains.append(round(ipn-e, 2))
 
     print(attrs)
     print(tuples)
