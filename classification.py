@@ -112,14 +112,15 @@ def getIPN(tuples):
     pos = 0
     for i in range(numTuples):
         #if there are 5 attribute values and a total of 6 tuples than subtract 2
-        print(tuples[i][numTuples-1])
-        if (tuples[i][numTuples-1] == 'y'):
+        print(tuples[i][numTuples-12])
+        if (tuples[i][numTuples-12] == 'Y'):
             pos+=1
     neg = numTuples-pos
-    print("neg: ", neg)
 
     pos = pos/numTuples
     neg = neg/numTuples
+    print("neg: ", neg, " pos ", pos)
+
     return (-pos * math.log2(pos)) - (neg * math.log2(neg))
 
 def main():
@@ -148,12 +149,13 @@ def main():
         tuples.append(dataLine)
         dataLine = infile.readline().rstrip('\n')
 
-    ipn = round(getIPN(tuples),2)
+    ipn = round(getIPN(tuples),6)
     print(ipn, "IPN")
     gains = []
     for i in range(len(attrs)-1):
-        e = round(calcEntropy(tuples, i),2)
-        gains.append(round(ipn-e, 2))
+        e = round(calcEntropy(tuples, i),6)
+        print('ent ',e)
+        gains.append(round(ipn-e, 6))
 
     print(attrs)
     print(tuples)
