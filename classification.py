@@ -98,13 +98,16 @@ def calcEntropy(tuples, slot):
         #print("Counts ", counts)
         totalCounts = counts[0] + counts[1]
         pos = counts[0]/totalCounts
+        print("POS ",pos)
         if (pos != 0):
             pos = -(pos * math.log2(pos))
         neg = counts[1]/totalCounts
+        print("NEG ", neg)
         if (neg != 0):
             neg = -(neg * math.log2(neg))
         entropy += ((totalCounts/numTuples) * (pos + neg))
         print(entropy, "totalCOunt ", totalCounts," numTuples ", numTuples, "pos ", pos, "neg ", neg )
+        print("ounts ", counts)
     print("____________________________________________")
     return entropy
 
