@@ -166,7 +166,7 @@ def main():
 
     print(attrs)
     print(tuples)
-    print(ipn)
-    print(gains)
+    print("IPN: ",ipn)
+    print("GAINS: ",gains)
 
 main()
