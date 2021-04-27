@@ -80,14 +80,14 @@ def calcEntropy(tuples, slot):
         v = tuples[i][slot]
         if (values.get(v) != None):
             counts = values[v]
-            if (tuples[i][numAttrs-12] == 'Y'):
-                #print(tuples[i][numAttrs-12])
+            if (tuples[i][numAttrs-1] == 'Y'):
+                print("THE NUMEBR --CLASS VALUE __>   ", tuples[i][numAttrs-1])
                 counts[0] += 1
             else:
                 counts[1] += 1
             values[v] = counts
         else:
-            if (tuples[i][numAttrs-12] == 'Y'):
+            if (tuples[i][numAttrs-1] == 'Y'):
                 values[v] = [1, 0]
             else:
                 values[v] = [0, 1]
@@ -113,13 +113,14 @@ def calcEntropy(tuples, slot):
 
 def getIPN(tuples):
     numTuples= len(tuples)
+    numAttrs=len(tuples[0])
     print(tuples)
     print(" Num Tuples ", numTuples)
     pos = 0
     for i in range(numTuples):
         #if there are 5 attribute values and a total of 6 tuples than subtract 2
         #print(tuples[i][numTuples-12])
-        if (tuples[i][numTuples-12] == 'Y'):
+        if (tuples[i][numAttrs-1] == 'Y'):
             pos+=1
     neg = numTuples-pos
 
